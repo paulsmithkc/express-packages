@@ -2,18 +2,24 @@
   "name": "express-packages",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "npx nx run-many --target=build",
+    "build:skip-cache": "npx nx run-many --target=build --skip-nx-cache",
+    "lint": "npx nx run-many --target=lint",
+    "test": "npx nx run-many --target=test"
+  },
   "private": true,
   "devDependencies": {
-    "@types/express": ">=4.0.0",
     "@nrwl/nx-cloud": "latest",
+    "@types/express": ">=4.0.0",
     "dotenv": "latest",
     "express": ">=4.0.0",
+    "jest": "^29.4.2",
+    "joi": ">=17.0.0",
     "mongodb": ">=4.0.0",
     "nx": "15.6.3",
     "prettier": "latest",
     "typescript": "latest",
-    "joi": ">=17.0.0",
     "zod": ">=3.0.0"
   },
   "workspaces": [
