@@ -1,10 +1,10 @@
-import Joi from 'joi';
+import z from 'zod';
 import type { RequestHandler, Request, Response, NextFunction } from 'express';
 
 export class ValidateRequestError extends Error {
   public status?: number;
-  public details?: JoiErrorMap;
-  constructor(status: number, message: string, details: JoiErrorMap) {
+  public details?: ZodErrorMap;
+  constructor(status: number, message: string, details: ZodErrorMap) {
     super(message);
     this.name = 'ValidateRequestError';
     this.status = status;
@@ -12,27 +12,27 @@ export class ValidateRequestError extends Error {
   }
 }
 
-export interface JoiSchemaMap {
-  [key: string]: Joi.ObjectSchema | null | undefined;
+export interface ZodSchemaMap {
+  [key: string]: z.AnyZodObject | null | undefined;
 }
 
-export interface JoiErrorMap {
-  [key: string]: Joi.ValidationError | null | undefined;
+export interface ZodErrorMap {
+  [key: string]: z.ZodError | null | undefined;
 }
 
 /**
- * Uses Joi to validate the request against a set of schemas
+ * Uses Zod to validate the request against a set of schemas
  * and updates the request to the sanitized values.
  *
  * Calls the next middleware if request is valid.
  * Sends a 400 response if the request is invalid.
  *
- * @param schemaMap joi schema map
+ * @param schemaMap zod schema map
  * @returns a middleware
  */
-function validRequest(schemaMap: JoiSchemaMap): RequestHandler {
+function validRequest(schemaMap: ZodSchemaMap): RequestHandler {
   return (req: Request & Record<string, any>, _res: Response, next: NextFunction) => {
-    const errors = {} as JoiErrorMap;
+    const errors = {} as ZodErrorMap;
     let anyErrors = false;
 
     for (const key in schemaMap) {
@@ -41,16 +41,11 @@ function validRequest(schemaMap: JoiSchemaMap): RequestHandler {
         continue;
       }
 
-      const validateResult = schema
-        .required()
-        .label('req.' + key)
-        .validate(req[key], { abortEarly: false });
-
-      if (validateResult.error) {
-        errors[key] = validateResult.error; // save validation error
+      try {
+        req[key] = schema.parse(req[key]); // validate & save sanitized data
+      } catch (err: any) {
+        errors[key] = err as z.ZodError; // save validation error
         anyErrors = true;
-      } else {
-        req[key] = validateResult.value; // save sanitized body
       }
     }
 

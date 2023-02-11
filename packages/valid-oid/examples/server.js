@@ -35,6 +35,12 @@ app.get('/api/product/id/:productId', validId('productId'), (req, res) => {
   }
 });
 
+// error handler
+app.use((err, _req, res, _next) => {
+  console.error(err);
+  return res.status(err.status || 500).json({ error: err });
+});
+
 // start application
 const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 5000;

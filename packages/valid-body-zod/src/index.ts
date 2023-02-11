@@ -16,10 +16,7 @@ export type ValidateBodyError = z.ZodError & { status?: number };
 export function validBody(schema: z.AnyZodObject): RequestHandler {
   return (req: Request, _res: Response, next: NextFunction) => {
     try {
-      // validate request body
-      const validateResult = schema.parse(req.body);
-      // save sanitized body
-      req.body = validateResult;
+      req.body = schema.parse(req.body); // validate & save sanitized body
       return next();
     } catch (err: any) {
       // return 400 response, from standard error handler

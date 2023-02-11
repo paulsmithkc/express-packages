@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const Joi = require('joi');
+const z = require('zod');
 const mongodb = require('mongodb');
 const validRequest = require('../dist/index.js');
 
@@ -33,22 +33,18 @@ const updateProduct = (productId, update) => {
 
 // schema
 const getProductSchema = {
-  params: Joi.object({
-    productId: Joi.string()
-      .pattern(/^[0-9a-fA-F]{24}$/, 'ObjectId')
-      .required(),
+  params: z.object({
+    productId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid ObjectId'),
   }),
 };
 const updateProductSchema = {
-  params: Joi.object({
-    productId: Joi.string()
-      .pattern(/^[0-9a-fA-F]{24}$/, 'ObjectId')
-      .required(),
+  params: z.object({
+    productId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid ObjectId'),
   }),
-  body: Joi.object({
-    name: Joi.string().trim().required(),
-    category: Joi.string().trim().required(),
-    price: Joi.number().min(0).precision(2).required(),
+  body: z.object({
+    name: z.string().transform((x) => x?.trim()),
+    category: z.string().transform((x) => x?.trim()),
+    price: z.number().min(0).multipleOf(0.01),
   }),
 };
 

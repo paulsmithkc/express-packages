@@ -1,7 +1,7 @@
 {
-  "name": "valid-body-zod",
+  "name": "valid-request-zod",
   "version": "2.0.0",
-  "description": "Express middleware for validating the request body with Zod.",
+  "description": "Express middleware for validating the request with Zod.",
   "keywords": [
     "express",
     "middleware",
@@ -22,12 +22,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paulsmithkc/valid-body.git"
+    "url": "git+https://github.com/paulsmithkc/valid-request.git"
   },
   "bugs": {
-    "url": "https://github.com/paulsmithkc/valid-body/issues"
+    "url": "https://github.com/paulsmithkc/valid-request/issues"
   },
-  "homepage": "https://github.com/paulsmithkc/valid-body#readme",
+  "homepage": "https://github.com/paulsmithkc/valid-request#readme",
   "peerDependencies": {
     "express": ">=4.0.0",
     "zod": ">=3.0.0"
@@ -36,6 +36,7 @@
     "@types/express": ">=4.0.0",
     "dotenv": ">=10.0.0",
     "express": ">=4.0.0",
+    "mongodb": ">=4.0.0",
     "typescript": ">=4.0.0",
     "zod": ">=3.0.0"
   }
