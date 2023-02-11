@@ -1,8 +1,0 @@
-.vscode
-node_modules
-examples
-*.env
-*.tgz
-jest.config*
-tsconfig.json
-tsconfig.tsbuildinfo

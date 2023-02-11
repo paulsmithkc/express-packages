@@ -37,6 +37,11 @@ testem.log
 *.tgz
 *.tsbuildinfo
 
+# duplicate files
+/packages/**/.npmignore
+/packages/**/tsconfig.json
+/packages/**/jest.config*
+
 # System Files
 .DS_Store
 Thumbs.db
