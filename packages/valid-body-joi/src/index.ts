@@ -10,7 +10,7 @@ export type ValidateBodyError = Joi.ValidationError & { status?: number };
  * Calls the next middleware if body is valid.
  * Sends a 400 response if the body is invalid.
  *
- * @param schema
+ * @param schema joi schema
  * @returns a middleware
  */
 export function validBody(schema: Joi.ObjectSchema): RequestHandler {

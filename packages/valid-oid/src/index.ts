@@ -31,7 +31,7 @@ export function validId(paramName: string): RequestHandler {
         req[paramName] = new ObjectId(paramValue);
         return next();
       }
-    } catch (err) {
+    } catch (err: any) {
       // return 404 response, from standard error handler
       return next(new ValidateIdError(404, `${paramName} "${paramValue}" is not a valid ObjectId.`));
     }
