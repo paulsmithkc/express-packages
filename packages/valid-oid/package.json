@@ -21,12 +21,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paulsmithkc/valid-oid.git"
+    "url": "git+https://github.com/paulsmithkc/express-packages"
   },
   "bugs": {
-    "url": "https://github.com/paulsmithkc/valid-oid/issues"
+    "url": "https://github.com/paulsmithkc/express-packages/issues"
   },
-  "homepage": "https://github.com/paulsmithkc/valid-oid#readme",
+  "homepage": "https://github.com/paulsmithkc/express-packages/tree/main/packages/valid-oid#readme",
   "peerDependencies": {
     "express": ">=4.0.0",
     "mongodb": ">=4.0.0"

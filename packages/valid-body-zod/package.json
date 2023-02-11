@@ -22,12 +22,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/paulsmithkc/valid-body.git"
+    "url": "git+https://github.com/paulsmithkc/express-packages"
   },
   "bugs": {
-    "url": "https://github.com/paulsmithkc/valid-body/issues"
+    "url": "https://github.com/paulsmithkc/express-packages/issues"
   },
-  "homepage": "https://github.com/paulsmithkc/valid-body#readme",
+  "homepage": "https://github.com/paulsmithkc/express-packages/tree/main/packages/valid-body-zod#readme",
   "peerDependencies": {
     "express": ">=4.0.0",
     "zod": ">=3.0.0"
