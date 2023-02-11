@@ -14,17 +14,19 @@
   "private": true,
   "devDependencies": {
     "@nrwl/nx-cloud": "latest",
-    "@types/express": ">=4.0.0",
+    "@types/express": "latest",
+    "@types/jest": "latest",
     "dotenv": "latest",
-    "express": ">=4.0.0",
-    "jest": "^29.4.2",
-    "joi": ">=17.0.0",
-    "mongodb": ">=4.0.0",
+    "express": "latest",
+    "jest": "latest",
+    "joi": "latest",
+    "mongodb": "latest",
     "nx": "15.6.3",
     "prettier": "latest",
+    "ts-jest": "latest",
     "ts-node": "latest",
     "typescript": "latest",
-    "zod": ">=3.0.0"
+    "zod": "latest"
   },
   "workspaces": [
     "packages/*"

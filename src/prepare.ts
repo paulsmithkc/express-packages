@@ -20,7 +20,7 @@ async function main() {
 
     await copyToPackage(packagePath, '.npmignore', USE_SYMLINK);
     await copyToPackage(packagePath, 'tsconfig.json', USE_SYMLINK);
-    await copyToPackage(packagePath, 'jest.config.json', USE_SYMLINK);
+    await copyToPackage(packagePath, 'jest.config.json', false); // jest config doesn't work with symlinks
     await copyToPackage(packagePath, 'LICENSE', false); // license must be an actual file
   }
 }

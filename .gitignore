@@ -3,6 +3,7 @@
 # compiled output
 dist
 tmp
+coverage
 /out-tsc
 
 # dependencies

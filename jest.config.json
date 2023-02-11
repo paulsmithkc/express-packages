@@ -1,3 +1,8 @@
 {
-  "verbose": true
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "verbose": true,
+  "bail": 1,
+  "roots": ["./src/", "./packages/"],
+  "testRegex": "^.+/(src|tests)/[^/]+\\.test.ts"
 }

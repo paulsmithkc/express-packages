@@ -14,6 +14,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
+    "test": "npx tsc && npx jest --collectCoverage",
     "pack": "npx tsc && npm pack",
     "example": "npx tsc && npx nodemon ./examples/server.js"
   },

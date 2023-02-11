@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "rootDir": "./src",
+    "rootDirs": ["./src", "./packages/*/src", "./tests", "./packages/*/tests"],
     "outDir": "./dist",
     "target": "es2016",
     "module": "commonjs",
@@ -11,5 +11,6 @@
     "strict": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["node_modules"]
 }
