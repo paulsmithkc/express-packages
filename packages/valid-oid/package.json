@@ -1,0 +1,37 @@
+{
+  "name": "valid-oid",
+  "version": "2.0.0",
+  "description": "Express middleware for validating an ObjectId in the path.",
+  "keywords": [
+    "express",
+    "middleware",
+    "validate",
+    "validator",
+    "validation",
+    "objectid",
+    "oid"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "example": "npx nodemon ./examples/server.js"
+  },
+  "author": "Paul Smith",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulsmithkc/valid-oid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/paulsmithkc/valid-oid/issues"
+  },
+  "homepage": "https://github.com/paulsmithkc/valid-oid#readme",
+  "peerDependencies": {
+    "express": ">=4.0.0",
+    "mongodb": ">=4.0.0"
+  },
+  "devDependencies": {
+    "dotenv": ">=10.0.0",
+    "express": ">=4.0.0",
+    "mongodb": ">=4.0.0"
+  }
+}
