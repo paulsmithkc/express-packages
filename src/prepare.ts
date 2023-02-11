@@ -1,5 +1,8 @@
 import { resolve as pathResolve } from 'path';
 import { readdir, stat, copyFile, symlink, rm } from 'node:fs/promises';
+import os from 'node:os';
+
+const USE_SYMLINK = os.platform() !== 'win32';
 
 async function main() {
   const packagesPath = pathResolve('./packages');
@@ -15,10 +18,10 @@ async function main() {
       continue;
     }
 
-    await copyToPackage(packagePath, '.npmignore', false);
-    await copyToPackage(packagePath, 'tsconfig.json', false);
-    await copyToPackage(packagePath, 'jest.config.json', false);
-    await copyToPackage(packagePath, 'LICENSE', false);
+    await copyToPackage(packagePath, '.npmignore', USE_SYMLINK);
+    await copyToPackage(packagePath, 'tsconfig.json', USE_SYMLINK);
+    await copyToPackage(packagePath, 'jest.config.json', USE_SYMLINK);
+    await copyToPackage(packagePath, 'LICENSE', false); // license must be an actual file
   }
 }
 
