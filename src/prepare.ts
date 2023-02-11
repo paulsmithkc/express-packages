@@ -2,7 +2,7 @@ import { resolve as pathResolve } from 'path';
 import { readdir, stat, copyFile, symlink, rm } from 'node:fs/promises';
 import os from 'node:os';
 
-const USE_SYMLINK = os.platform() !== 'win32';
+const USE_SYMLINK = os.platform() !== 'win32' || process.argv.includes('--link', 2);
 
 async function main() {
   const packagesPath = pathResolve('./packages');
