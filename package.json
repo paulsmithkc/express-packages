@@ -7,7 +7,8 @@
     "build": "npx nx run-many --target=build",
     "build:skip-cache": "npx nx run-many --target=build --skip-nx-cache",
     "lint": "npx nx run-many --target=lint",
-    "test": "npx nx run-many --target=test"
+    "test": "npx nx run-many --target=test",
+    "pack": "npx nx run-many --target=pack"
   },
   "private": true,
   "devDependencies": {

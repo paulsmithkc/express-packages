@@ -15,19 +15,22 @@ async function main() {
       continue;
     }
 
-    await copyToPackage(packagePath, '.npmignore');
-    await copyToPackage(packagePath, 'tsconfig.json');
-    await copyToPackage(packagePath, 'jest.config.ts');
-    await copyToPackage(packagePath, 'LICENSE');
+    await copyToPackage(packagePath, '.npmignore', false);
+    await copyToPackage(packagePath, 'tsconfig.json', false);
+    await copyToPackage(packagePath, 'jest.config.json', false);
+    await copyToPackage(packagePath, 'LICENSE', false);
   }
 }
 
-async function copyToPackage(packagePath: string, fileName: string) {
+async function copyToPackage(packagePath: string, fileName: string, link: boolean) {
   const srcPath = pathResolve(fileName);
   const dstPath = pathResolve(packagePath, fileName);
-  await copyFile(srcPath, dstPath);
-  // await rm(dstPath, { force: true });
-  // await symlink(srcPath, dstPath);
+  await rm(dstPath, { force: true });
+  if (!link) {
+    await copyFile(srcPath, dstPath);
+  } else {
+    await symlink(srcPath, dstPath);
+  }
 }
 
 main();
