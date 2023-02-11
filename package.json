@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "prepare": "npx ts-node ./src/prepare.ts",
     "build": "npx nx run-many --target=build",
     "build:skip-cache": "npx nx run-many --target=build --skip-nx-cache",
     "lint": "npx nx run-many --target=lint",
@@ -19,6 +20,7 @@
     "mongodb": ">=4.0.0",
     "nx": "15.6.3",
     "prettier": "latest",
+    "ts-node": "latest",
     "typescript": "latest",
     "zod": ">=3.0.0"
   },
