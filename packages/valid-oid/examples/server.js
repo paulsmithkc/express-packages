@@ -1,44 +1,39 @@
 require('dotenv').config();
 
 const express = require('express');
-const { ObjectId } = require('mongodb');
-const validId = require('../index');
+const mongodb = require('mongodb');
+const validId = require('../dist/index.js');
 
 // create application
 const app = express();
 
 // data
 const products = [
-  { _id: new ObjectId(), name: 'Product 1' },
-  { _id: new ObjectId(), name: 'Product 2' },
-  { _id: new ObjectId(), name: 'Product 3' },
+  { _id: new mongodb.ObjectId(), name: 'Product 1' },
+  { _id: new mongodb.ObjectId(), name: 'Product 2' },
+  { _id: new mongodb.ObjectId(), name: 'Product 3' },
 ];
+console.log('products', products);
 const getProductById = (productId) => {
   return products.find((product) => product._id.equals(productId));
 };
 
 // routes
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   return res.redirect('/api/product/list');
 });
-app.get('/api/product/list', (req, res) => {
+app.get('/api/product/list', (_req, res) => {
   return res.json(products);
 });
-app.get(
-  '/api/product/id/:productId',
-  validId('productId'),
-  (req, res, next) => {
-    const productId = req.productId;
-    const product = getProductById(productId);
-    if (!product) {
-      return res
-        .status(404)
-        .json({ error: `Product "${productId}" not found.` });
-    } else {
-      return res.json(product);
-    }
+app.get('/api/product/id/:productId', validId('productId'), (req, res) => {
+  const productId = req.productId;
+  const product = getProductById(productId);
+  if (!product) {
+    return res.status(404).json({ error: `Product "${productId}" not found.` });
+  } else {
+    return res.json(product);
   }
-);
+});
 
 // start application
 const hostname = process.env.HOSTNAME || 'localhost';

@@ -5,13 +5,14 @@
   "scripts": {},
   "private": true,
   "devDependencies": {
+    "@types/express": ">=4.0.0",
     "@nrwl/nx-cloud": "latest",
-    "dotenv": ">=10.0.0",
+    "dotenv": "latest",
     "express": ">=4.0.0",
     "mongodb": ">=4.0.0",
     "nx": "15.6.3",
-    "prettier": ">=2.6.2",
-    "typescript": ">=4.9.5"
+    "prettier": "latest",
+    "typescript": "latest"
   },
   "workspaces": [
     "packages/*"
