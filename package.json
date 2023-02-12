@@ -1,7 +1,17 @@
 {
-  "name": "express-packages",
-  "version": "0.0.0",
+  "name": "@merlin4/express-packages",
+  "version": "1.0.0",
+  "private": false,
+  "author": "Paul Smith",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulsmithkc/express-packages"
+  },
+  "bugs": {
+    "url": "https://github.com/paulsmithkc/express-packages/issues"
+  },
+  "homepage": "https://github.com/paulsmithkc/express-packages#readme",
   "scripts": {
     "prepare": "npx ts-node ./src/prepare.ts",
     "prepare:link": "npx ts-node ./src/prepare.ts --link",
@@ -15,15 +25,16 @@
     "test:skip-cache": "npx nx run-many --target=test --skip-nx-cache",
     "pack:skip-cache": "npx nx run-many --target=pack --skip-nx-cache"
   },
-  "private": true,
   "devDependencies": {
     "@nrwl/nx-cloud": "latest",
     "@types/express": "latest",
     "@types/jest": "latest",
+    "@types/lodash": "latest",
     "dotenv": "latest",
     "express": "latest",
     "jest": "latest",
     "joi": "latest",
+    "lodash": "^4.17.21",
     "mongodb": "latest",
     "nx": "15.6.3",
     "prettier": "latest",

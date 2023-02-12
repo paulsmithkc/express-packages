@@ -1,6 +1,7 @@
 {
   "name": "valid-body-zod",
   "version": "2.0.0",
+  "private": false,
   "description": "Express middleware for validating the request body with Zod.",
   "keywords": [
     "express",

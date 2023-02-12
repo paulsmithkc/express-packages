@@ -1,6 +1,7 @@
 {
   "name": "valid-oid",
   "version": "2.0.0",
+  "private": false,
   "description": "Express middleware for validating a MongoDB ObjectId in the request path.",
   "keywords": [
     "express",
