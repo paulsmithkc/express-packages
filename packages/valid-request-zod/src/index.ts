@@ -56,7 +56,6 @@ function validRequest(schemaMap: ZodSchemaMap | null | undefined): RequestHandle
         try {
           req[key] = schema.parse(req[key]); // validate & save sanitized data
         } catch (err: any) {
-          console.log(err);
           errors[key] = err as z.ZodError; // save validation error
           anyErrors = true;
         }
