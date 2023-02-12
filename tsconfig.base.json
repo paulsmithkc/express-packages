@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es2016",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "rootDirs": ["src", "tests"],
+    "outDir": "dist",
+    "paths": {
+      "valid-oid": ["./packages/valid-oid/src/index.ts"],
+      "valid-body-joi": ["./packages/valid-body-joi/src/index.ts"],
+      "valid-body-zod": ["./packages/valid-body-zod/src/index.ts"],
+      "valid-request-joi": ["./packages/valid-request-joi/src/index.ts"],
+      "valid-request-zod": ["./packages/valid-request-zod/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

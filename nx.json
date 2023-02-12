@@ -8,23 +8,51 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "cacheableOperations": ["build", "lint", "test", "e2e", "publish"],
         "accessToken": "ZjcyMTg2YWUtYWE4MC00NGFhLWI4Y2EtMWUzZWRhZDU1ODA4fHJlYWQtd3JpdGU="
       }
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/tsconfig.json",
+        "{projectRoot}/tsconfig.base.json",
+        "{projectRoot}/tsconfig.root.json",
+        "{projectRoot}/tsconfig.package.json"
+      ]
     },
     "lint": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"],
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/.eslintrc",
+        "{projectRoot}/.prettierrc",
+        "{projectRoot}/.prettierignore"
+      ]
     },
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"],
+      "inputs": [
+        "default",
+        "^production",
+        "{projectRoot}/jest.config.json",
+        "{projectRoot}/jest.base.config.json",
+        "{projectRoot}/jest.root.config.json",
+        "{projectRoot}/jest.package.config.json"
+      ]
     },
     "pack": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"],
+      "inputs": ["default", "^production", "{workspaceRoot}/package.json", "{workspaceRoot}/package-lock.json"]
+    },
+    "publish": {
+      "dependsOn": ["build", "lint", "test", "pack"],
+      "inputs": ["default", "^production", "{workspaceRoot}/package.json", "{workspaceRoot}/package-lock.json"]
     }
   }
 }

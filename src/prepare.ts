@@ -19,18 +19,18 @@ async function main() {
       continue;
     }
 
-    await copyToPackage(packagePath, '.npmignore', USE_SYMLINK);
-    await copyToPackage(packagePath, 'tsconfig.json', USE_SYMLINK);
-    await copyToPackage(packagePath, 'jest.config.json', false); // jest config doesn't work with symlinks
-    await copyToPackage(packagePath, 'LICENSE', false); // license must be an actual file
+    await copyToPackage(USE_SYMLINK, packagePath, '.npmignore', '.npmignore'); // needed for pack & publish
+    await copyToPackage(USE_SYMLINK, packagePath, 'tsconfig.package.json', 'tsconfig.json'); // needed for local build
+    await copyToPackage(false, packagePath, 'jest.config.json'); // jest config doesn't work with symlinks
+    await copyToPackage(false, packagePath, 'LICENSE'); // license must be an actual file
 
     await fixMetadata(packagePath, packageName);
   }
 }
 
-async function copyToPackage(packagePath: string, fileName: string, link: boolean) {
-  const srcPath = pathResolve(fileName);
-  const dstPath = pathResolve(packagePath, fileName);
+async function copyToPackage(link: boolean, packagePath: string, srcFile: string, dstFile?: string) {
+  const srcPath = pathResolve(srcFile);
+  const dstPath = pathResolve(packagePath, dstFile || srcFile);
   await rm(dstPath, { force: true });
   if (!link) {
     await copyFile(srcPath, dstPath);
