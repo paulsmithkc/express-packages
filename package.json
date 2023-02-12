@@ -22,6 +22,10 @@
     "test": "npx nx run-many --target=test",
     "pack": "npm pack --workspaces",
     "publish": "npm publish --workspaces",
+    "bump:patch": "npm version patch --workspaces --git-tag-version -m \"bump patch version\"",
+    "bump:minor": "npm version minor --workspaces --git-tag-version -m \"bump minor version\"",
+    "bump:major": "npm version major --workspaces --git-tag-version -m \"bump major version\"",
+    "push:tags": "git push --tags",
     "build:skip-cache": "npx nx run-many --target=build --skip-nx-cache",
     "lint:skip-cache": "npx nx run-many --target=lint --skip-nx-cache",
     "test:skip-cache": "npx nx run-many --target=test --skip-nx-cache"
