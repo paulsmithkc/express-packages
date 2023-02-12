@@ -16,9 +16,12 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
-    "test": "npx tsc && npx jest --collectCoverage",
-    "pack": "npx tsc && npm pack",
-    "example": "npx tsc && npx nodemon ./examples/server.js"
+    "test": "npx jest --collectCoverage",
+    "example": "npx nodemon ./examples/server.js",
+    "pretest": "npm run build",
+    "prepack": "npm run build",
+    "prepublish": "npm run build",
+    "preexample": "npm run build"
   },
   "author": "Paul Smith",
   "license": "MIT",

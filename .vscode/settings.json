@@ -1,6 +1,6 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["cacheable", "npmignore", "P@ssword"],
+  "cSpell.words": ["cacheable", "npmignore", "nrwl", "P@ssword", "preexample"],
   "debug.javascript.autoAttachSmartPattern": [
     "!**/node_modules/**",
     "${workspaceFolder}/src",

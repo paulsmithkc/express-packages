@@ -15,16 +15,16 @@
   "scripts": {
     "prepare": "npx ts-node ./src/prepare.ts",
     "prepare:link": "npx ts-node ./src/prepare.ts --link",
+    "tsc": "npx tsc -p tsconfig.root.json",
+    "jest": "npx tsc -p tsconfig.root.json && npx jest -c jest.root.config.json --collectCoverage",
     "build": "npx nx run-many --target=build",
     "lint": "npx nx run-many --target=lint",
     "test": "npx nx run-many --target=test",
-    "pack": "npx nx run-many --target=pack",
-    "tsc": "npx tsc -p tsconfig.root.json",
-    "jest": "npx tsc -p tsconfig.root.json && npx jest -c jest.root.config.json --collectCoverage",
+    "pack": "npm pack --workspaces",
+    "publish": "npm publish --workspaces",
     "build:skip-cache": "npx nx run-many --target=build --skip-nx-cache",
     "lint:skip-cache": "npx nx run-many --target=lint --skip-nx-cache",
-    "test:skip-cache": "npx nx run-many --target=test --skip-nx-cache",
-    "pack:skip-cache": "npx nx run-many --target=pack --skip-nx-cache"
+    "test:skip-cache": "npx nx run-many --target=test --skip-nx-cache"
   },
   "devDependencies": {
     "@nrwl/nx-cloud": "latest",

@@ -1,6 +1,8 @@
 .vscode
 node_modules
 examples
+coverage
+
 *.env
 *.tgz
 jest.config*

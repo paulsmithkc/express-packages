@@ -70,6 +70,15 @@ async function fixMetadata(packagePath: string, packageName: string) {
     url: 'https://github.com/paulsmithkc/express-packages/issues',
   });
   fix('homepage', `https://github.com/paulsmithkc/express-packages/tree/main/packages/${packageName}#readme`);
+  fix('scripts', {
+    build: 'npx tsc',
+    test: 'npx jest --collectCoverage',
+    example: 'npx nodemon ./examples/server.js',
+    pretest: 'npm run build',
+    prepack: 'npm run build',
+    prepublish: 'npm run build',
+    preexample: 'npm run build',
+  });
 
   if (modified) {
     console.log('modified', metadataPath);
