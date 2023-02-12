@@ -10,6 +10,17 @@ export class ValidateRequestError extends Error {
     this.status = status;
     this.details = details;
   }
+  /* istanbul ignore next */
+  toString() {
+    let result = super.toString();
+    const details = this.details;
+    if (details) {
+      for (const key in details) {
+        result += `\n${key}: ${JSON.stringify(details[key])}`;
+      }
+    }
+    return result;
+  }
 }
 
 export interface JoiSchemaMap {
@@ -30,27 +41,31 @@ export interface JoiErrorMap {
  * @param schemaMap joi schema map
  * @returns a middleware
  */
-function validRequest(schemaMap: JoiSchemaMap): RequestHandler {
+function validRequest(schemaMap: JoiSchemaMap | null | undefined): RequestHandler {
   return (req: Request & Record<string, any>, _res: Response, next: NextFunction) => {
     const errors = {} as JoiErrorMap;
     let anyErrors = false;
 
-    for (const key in schemaMap) {
-      const schema = schemaMap[key];
-      if (!schema) {
-        continue;
-      }
+    if (schemaMap) {
+      for (const key in schemaMap) {
+        const schema = schemaMap[key];
+        if (!schema) {
+          continue;
+        }
 
-      const validateResult = schema
-        .required()
-        .label('req.' + key)
-        .validate(req[key], { abortEarly: false });
+        const validateResult = schema
+          .required()
+          .label('req.' + key)
+          .validate(req[key], { abortEarly: false });
 
-      if (validateResult.error) {
-        errors[key] = validateResult.error; // save validation error
-        anyErrors = true;
-      } else {
-        req[key] = validateResult.value; // save sanitized body
+        const validateError = validateResult.error;
+
+        if (validateError) {
+          errors[key] = validateError; // save validation error
+          anyErrors = true;
+        } else {
+          req[key] = validateResult.value; // save sanitized body
+        }
       }
     }
 

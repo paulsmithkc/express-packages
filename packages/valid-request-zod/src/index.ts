@@ -10,6 +10,17 @@ export class ValidateRequestError extends Error {
     this.status = status;
     this.details = details;
   }
+  /* istanbul ignore next */
+  toString() {
+    let result = super.toString();
+    const details = this.details;
+    if (details) {
+      for (const key in details) {
+        result += `\n${key}: ${JSON.stringify(details[key])}`;
+      }
+    }
+    return result;
+  }
 }
 
 export interface ZodSchemaMap {
@@ -30,22 +41,25 @@ export interface ZodErrorMap {
  * @param schemaMap zod schema map
  * @returns a middleware
  */
-function validRequest(schemaMap: ZodSchemaMap): RequestHandler {
+function validRequest(schemaMap: ZodSchemaMap | null | undefined): RequestHandler {
   return (req: Request & Record<string, any>, _res: Response, next: NextFunction) => {
     const errors = {} as ZodErrorMap;
     let anyErrors = false;
 
-    for (const key in schemaMap) {
-      const schema = schemaMap[key];
-      if (!schema) {
-        continue;
-      }
+    if (schemaMap) {
+      for (const key in schemaMap) {
+        const schema = schemaMap[key];
+        if (!schema) {
+          continue;
+        }
 
-      try {
-        req[key] = schema.parse(req[key]); // validate & save sanitized data
-      } catch (err: any) {
-        errors[key] = err as z.ZodError; // save validation error
-        anyErrors = true;
+        try {
+          req[key] = schema.parse(req[key]); // validate & save sanitized data
+        } catch (err: any) {
+          console.log(err);
+          errors[key] = err as z.ZodError; // save validation error
+          anyErrors = true;
+        }
       }
     }
 

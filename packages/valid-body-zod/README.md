@@ -21,7 +21,7 @@ Define a schema:
 
 ```js
 const loginSchema = z.object({
-  email: z.string().transform((x) => x?.toLowerCase()?.trim()),
+  email: z.string().transform((x) => x?.trim()?.toLowerCase()),
   password: z.string().transform((x) => x?.trim()),
 });
 ```

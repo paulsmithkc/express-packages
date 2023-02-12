@@ -1,4 +1,9 @@
 {
   "editor.formatOnSave": true,
-  "cSpell.words": ["npmignore"]
+  "cSpell.words": ["npmignore", "P@ssword"],
+  "debug.javascript.autoAttachSmartPattern": [
+    "!**/node_modules/**",
+    "${workspaceFolder}/src",
+    "${workspaceFolder}/**/src"
+  ]
 }

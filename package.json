@@ -6,10 +6,14 @@
     "prepare": "npx ts-node ./src/prepare.ts",
     "prepare:link": "npx ts-node ./src/prepare.ts --link",
     "build": "npx nx run-many --target=build",
-    "build:skip-cache": "npx nx run-many --target=build --skip-nx-cache",
     "lint": "npx nx run-many --target=lint",
     "test": "npx nx run-many --target=test",
-    "pack": "npx nx run-many --target=pack"
+    "pack": "npx nx run-many --target=pack",
+    "jest": "npx tsc && npx jest -c jest.root.config.json --collectCoverage",
+    "build:skip-cache": "npx nx run-many --target=build --skip-nx-cache",
+    "lint:skip-cache": "npx nx run-many --target=lint --skip-nx-cache",
+    "test:skip-cache": "npx nx run-many --target=test --skip-nx-cache",
+    "pack:skip-cache": "npx nx run-many --target=pack --skip-nx-cache"
   },
   "private": true,
   "devDependencies": {

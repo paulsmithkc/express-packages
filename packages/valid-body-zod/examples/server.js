@@ -13,10 +13,7 @@ app.use(express.json());
 
 // schema
 const loginSchema = z.object({
-  email: z
-    .string()
-    .transform((x) => x?.toLowerCase()?.trim())
-    .email(),
+  email: z.string().transform((x) => x?.trim()?.toLowerCase()),
   password: z.string().transform((x) => x?.trim()),
 });
 
