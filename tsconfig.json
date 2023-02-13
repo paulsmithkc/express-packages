@@ -9,7 +9,7 @@
     "strict": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
-    "rootDirs": ["src", "tests"],
+    "rootDirs": ["./src", "./packages/*/src", "./tests", "./packages/*/tests"],
     "outDir": "dist",
     "paths": {
       "valid-oid": ["./packages/valid-oid/src/index.ts"],
