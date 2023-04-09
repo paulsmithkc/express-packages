@@ -2,9 +2,10 @@
 
 # compiled output
 dist
+dist-example
+dist-examples
 tmp
 coverage
-/out-tsc
 
 # dependencies
 node_modules

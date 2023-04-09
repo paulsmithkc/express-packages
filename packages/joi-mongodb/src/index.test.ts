@@ -1,11 +1,9 @@
-import { ObjectId } from 'mongodb';
-import Joi from 'joi';
-import init from './index';
+import JoiMongoDB, { ObjectId, ObjectIdSchema } from './index';
 
 describe('joi-mongodb', () => {
-  let schema: Joi.AnySchema;
+  let schema: ObjectIdSchema;
   beforeAll(() => {
-    schema = init(Joi).objectId();
+    schema = JoiMongoDB().objectId();
   });
 
   it('valid: ObjectId', () => {

@@ -72,10 +72,10 @@ async function fixMetadata(packagePath: string, packageName: string) {
   });
   fix('homepage', `https://github.com/paulsmithkc/express-packages/tree/main/packages/${packageName}#readme`);
   fix('scripts', {
+    ...(metadata.scripts || {}),
     reinstall: 'rm -rf node_modules package-lock.json && npm install',
     build: 'npx tsc',
     test: 'npx jest --collectCoverage',
-    example: 'npx nodemon ./examples/server.js',
     pretest: 'npm run build',
     prepack: 'npm run build',
     prepublish: 'npm run build',

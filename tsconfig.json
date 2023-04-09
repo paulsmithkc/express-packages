@@ -5,6 +5,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipDefaultLibCheck": true,
@@ -16,8 +17,9 @@
       "valid-body-joi": ["./packages/valid-body-joi/src/index.ts"],
       "valid-body-zod": ["./packages/valid-body-zod/src/index.ts"],
       "valid-request-joi": ["./packages/valid-request-joi/src/index.ts"],
-      "valid-request-zod": ["./packages/valid-request-zod/src/index.ts"]
+      "valid-request-zod": ["./packages/valid-request-zod/src/index.ts"],
+      "joi-mongodb": ["./packages/joi-mongodb/src/index.ts"]
     }
   },
-  "exclude": ["node_modules"]
+  "exclude": ["./node_modules", "./dist", "./example", "./examples"]
 }

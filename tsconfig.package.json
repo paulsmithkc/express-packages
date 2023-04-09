@@ -3,5 +3,6 @@
   "compilerOptions": {
     "rootDirs": ["./src", "./tests"],
     "outDir": "./dist"
-  }
+  },
+  "exclude": ["./node_modules", "./dist", "./example", "./examples"]
 }

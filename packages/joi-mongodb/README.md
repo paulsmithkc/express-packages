@@ -8,16 +8,53 @@ Joi custom validator for MongoDB ObjectId.
 npm install joi-mongodb
 ```
 
-## Usage
+## CommonJS Usage
 
-In your application entry point (index.js/server.js/app.js):
+In your application's entry point (index.js/server.js/app.js):
 
 ```js
-const Joi = require('joi');
-require('joi-mongodb')(Joi);
+const Joi = require('joi-mongodb')(Joi);
 ```
 
-Then it can be used just like any other Joi type:
+Then the `objectId()` validator can be used just like any other Joi validator:
+
+```js
+const schema = Joi.object({
+  _id: Joi.objectId(),
+  name: Joi.string(),
+  date: Joi.date(),
+});
+```
+
+## ESM Usage
+
+In your application's entry point (index.js/server.js/app.js):
+
+```js
+import JoiMongoDB from 'joi-mongodb';
+const Joi = JoiMongoDB();
+```
+
+Then the `objectId()` validator can be used just like any other Joi validator:
+
+```js
+const schema = Joi.object({
+  _id: Joi.objectId(),
+  name: Joi.string(),
+  date: Joi.date(),
+});
+```
+
+## TS Usage
+
+Inject the objectId validator:
+
+```js
+import JoiMongoDB from 'joi-mongodb';
+const Joi = JoiMongoDB();
+```
+
+Then the `objectId()` validator can be used just like any other Joi validator:
 
 ```js
 const schema = Joi.object({
