@@ -13,7 +13,7 @@ npm install joi-mongodb
 In your application's entry point (index.js/server.js/app.js):
 
 ```js
-const Joi = require('joi-mongodb')(Joi);
+const Joi = require('joi-mongodb')();
 ```
 
 Then the `objectId()` validator can be used just like any other Joi validator:
