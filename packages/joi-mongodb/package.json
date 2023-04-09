@@ -10,7 +10,9 @@
     "oid",
     "custom",
     "validator",
-    "extension"
+    "extension",
+    "plugin",
+    "inject"
   ],
   "main": "dist/index.js",
   "scripts": {
