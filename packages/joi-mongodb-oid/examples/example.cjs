@@ -8,7 +8,7 @@ const schema = Joi.object({
 });
 
 // test values
-const testValues = [undefined, null, false, true, 0, '', 123, '123', 'abc', ObjectId(), ObjectId().toString()];
+const testValues = [undefined, null, false, true, 0, '', 123, '123', 'abc', new ObjectId(), new ObjectId().toString()];
 console.log('TEST VALUES:', testValues);
 
 // validate each test value

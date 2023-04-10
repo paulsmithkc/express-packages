@@ -1,16 +1,15 @@
-// inject objectId validator
-const Joi = require('../dist/index.js')();
+const z = require('zod');
+const { ObjectId, zObjectId } = require('../dist/index.js');
 
 // define schema
-const { ObjectId } = require('mongodb');
-const schema = Joi.object({
-  id: Joi.objectId().required(),
+const schema = z.object({
+  id: zObjectId,
 });
 
 // test values
-const testValues = [undefined, null, false, true, 0, '', 123, '123', 'abc', ObjectId(), ObjectId().toString()];
+const testValues = [undefined, null, false, true, 0, '', 123, '123', 'abc', new ObjectId(), new ObjectId().toString()];
 console.log('TEST VALUES:', testValues);
 
 // validate each test value
-const results = testValues.map((x) => schema.validate({ id: x }));
+const results = testValues.map((x) => schema.safeParse({ id: x }));
 console.log('RESULTS:', results);

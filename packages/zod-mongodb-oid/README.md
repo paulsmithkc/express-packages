@@ -5,71 +5,49 @@ Custom Zod validator for MongoDB ObjectId.
 ## Install
 
 ```bash
-npm install joi-mongodb
+npm install zod-mongodb-oid
 ```
 
 ## CommonJS Usage
 
-In your application's entry point (index.js/server.js/app.js):
-
 ```js
-const Joi = require('joi-mongodb')();
-```
+const z = require('zod');
+const { zObjectId } = require('zod-mongodb-oid');
 
-Then the `objectId()` validator can be used just like any other Joi validator:
-
-```js
-const schema = Joi.object({
-  _id: Joi.objectId(),
-  name: Joi.string(),
-  date: Joi.date(),
+const schema = z.object({
+  _id: zObjectId,
+  name: z.string(),
+  date: z.date(),
 });
 ```
 
 ## ESM Usage
 
-In your application's entry point (index.js/server.js/app.js):
-
 ```js
-import JoiMongoDB from 'joi-mongodb';
-const Joi = JoiMongoDB();
-```
+import z from 'zod';
+import { zObjectId } from 'zod-mongodb-oid';
 
-Then the `objectId()` validator can be used just like any other Joi validator:
-
-```js
-const schema = Joi.object({
-  _id: Joi.objectId(),
-  name: Joi.string(),
-  date: Joi.date(),
+const schema = z.object({
+  _id: zObjectId,
+  name: z.string(),
+  date: z.date(),
 });
 ```
 
 ## TS Usage
 
-Inject the objectId validator:
-
 ```js
-import JoiMongoDB from 'joi-mongodb';
-const Joi = JoiMongoDB();
-```
+import z from 'zod';
+import { zObjectId } from 'zod-mongodb-oid';
 
-Then the `objectId()` validator can be used just like any other Joi validator:
-
-```js
-const schema = Joi.object({
-  _id: Joi.objectId(),
-  name: Joi.string(),
-  date: Joi.date(),
+const schema = z.object({
+  _id: zObjectId,
+  name: z.string(),
+  date: z.date(),
 });
 ```
 
-## Similar Packages
+## Related Packages
 
-- [joi-objectid](https://www.npmjs.com/package/joi-objectid)
-- [joi-oid](https://www.npmjs.com/package/joi-oid)
-- [joi-objectid-validator](https://www.npmjs.com/package/joi-objectid-validator)
-- [joi-mongodb-objectid](https://www.npmjs.com/package/joi-mongodb-objectid)
-- [joi-mongoose-objectid](https://www.npmjs.com/package/joi-mongoose-objectid)
-- [joi-objectid-extension](https://www.npmjs.com/package/joi-objectid-extension)
-- [object-id-joi-extension](https://www.npmjs.com/package/object-id-joi-extension)
+- [zod](https://www.npmjs.com/package/zod)
+- [mongodb](https://www.npmjs.com/package/mongodb)

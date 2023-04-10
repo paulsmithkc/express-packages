@@ -5,7 +5,7 @@ Custom Joi validator for MongoDB ObjectId.
 ## Install
 
 ```bash
-npm install joi-mongodb
+npm install joi-mongodb-oid
 ```
 
 ## CommonJS Usage
@@ -13,7 +13,7 @@ npm install joi-mongodb
 In your application's entry point (index.js/server.js/app.js):
 
 ```js
-const Joi = require('joi-mongodb')();
+const Joi = require('joi-mongodb-oid')();
 ```
 
 Then the `objectId()` validator can be used just like any other Joi validator:
@@ -31,7 +31,7 @@ const schema = Joi.object({
 In your application's entry point (index.js/server.js/app.js):
 
 ```js
-import JoiMongoDB from 'joi-mongodb';
+import JoiMongoDB from 'joi-mongodb-oid';
 const Joi = JoiMongoDB();
 ```
 
@@ -50,7 +50,7 @@ const schema = Joi.object({
 Inject the objectId validator:
 
 ```js
-import JoiMongoDB from 'joi-mongodb';
+import JoiMongoDB from 'joi-mongodb-oid';
 const Joi = JoiMongoDB();
 ```
 
