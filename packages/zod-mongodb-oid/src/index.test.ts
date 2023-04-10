@@ -1,6 +1,6 @@
 import { ObjectId, ZodObjectId, zObjectId } from './index';
 
-describe('joi-mongodb', () => {
+describe('zod-mongodb-oid', () => {
   let schema: ZodObjectId;
   beforeAll(() => {
     schema = zObjectId;
