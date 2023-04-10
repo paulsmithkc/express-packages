@@ -1,21 +1,19 @@
 import { ObjectId } from 'mongodb';
-import type { Root, AnySchema, CustomHelpers } from 'joi';
+import type { Root, CustomHelpers } from 'joi';
 
-type ObjectIdSchema = AnySchema;
-type ObjectIdSchemaFunc = () => ObjectIdSchema;
-type JoiMongoDb = Root & { objectId: ObjectIdSchemaFunc };
+type Joi = Root;
 
-const _objectId = (joi: Root): ObjectIdSchema => {
+const _objectId = (joi: Joi) => {
   return joi
     .any()
     .custom((value: any, helpers: CustomHelpers) => {
       try {
         if (!value) {
           throw new Error('ObjectId was falsy');
-        } else if (typeof value !== 'string' && typeof value !== 'object') {
-          throw new Error('ObjectId was wrong type');
-        } else {
+        } else if (typeof value === 'string' || value instanceof ObjectId) {
           return new ObjectId(value);
+        } else {
+          throw new Error('ObjectId was wrong type');
         }
       } catch {
         return helpers.error('any.objectId');
@@ -28,14 +26,18 @@ const _objectId = (joi: Root): ObjectIdSchema => {
     });
 };
 
-const objectId = (joi: Root | JoiMongoDb): ObjectIdSchema => {
+type JoiObjectId = ReturnType<typeof _objectId>;
+type JoiExtended = Joi & { objectId: () => JoiObjectId };
+
+/* istanbul ignore next */
+const objectId = (joi: Joi | JoiExtended): JoiObjectId => {
   return _objectId(joi);
 };
 
-const init = (joi?: Root | JoiMongoDb): JoiMongoDb => {
-  let Joi = joi as JoiMongoDb;
+const extend = (joi?: Joi | JoiExtended): JoiExtended => {
+  let Joi = joi as JoiExtended;
   if (!Joi) {
-    Joi = require('joi') as JoiMongoDb;
+    Joi = require('joi') as JoiExtended;
   }
   if (!Joi.objectId) {
     Joi.objectId = () => _objectId(Joi);
@@ -44,11 +46,11 @@ const init = (joi?: Root | JoiMongoDb): JoiMongoDb => {
 };
 
 // ESM exports
-export default init;
-export { ObjectId, ObjectIdSchema, ObjectIdSchemaFunc, objectId, init };
+export default extend;
+export { ObjectId, Joi, JoiExtended, JoiObjectId, objectId, extend };
 
 // CommonJS exports
-module.exports = init;
-module.exports.init = init;
+module.exports = extend;
+module.exports.extend = extend;
 module.exports.objectId = objectId;
 module.exports.ObjectId = ObjectId;

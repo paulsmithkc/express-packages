@@ -1,7 +1,7 @@
-import JoiMongoDB, { ObjectId, ObjectIdSchema } from './index';
+import JoiMongoDB, { ObjectId, JoiObjectId } from './index';
 
-describe('joi-mongodb', () => {
-  let schema: ObjectIdSchema;
+describe('joi-mongodb-oid', () => {
+  let schema: JoiObjectId;
   beforeAll(() => {
     schema = JoiMongoDB().objectId();
   });
