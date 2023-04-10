@@ -1,5 +1,5 @@
 {
-  "name": "joi-mongodb",
+  "name": "joi-mongodb-oid",
   "version": "2.0.1",
   "private": false,
   "description": "Joi custom validator for MongoDB ObjectId.",
@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/paulsmithkc/express-packages/issues"
   },
-  "homepage": "https://github.com/paulsmithkc/express-packages/tree/main/packages/joi-mongodb#readme",
+  "homepage": "https://github.com/paulsmithkc/express-packages/tree/main/packages/joi-mongodb-oid#readme",
   "peerDependencies": {
     "joi": ">=17.0.0",
     "mongodb": ">=4.0.0"

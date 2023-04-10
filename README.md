@@ -20,7 +20,8 @@ This suite of packages has been designed to work together with a few different t
 - [valid-request-joi](./packages/valid-request-joi/README.md) - Express middleware for validating the request object with Joi.
 - [valid-body-zod](./packages/valid-body-zod/README.md) - Express middleware for validating the request body with Zod.
 - [valid-request-zod](./packages/valid-request-zod/README.md) - Express middleware for validating the request object with Zod.
-- [joi-mongodb](./packages/joi-mongodb/README.md) - Joi custom validator for MongoDB ObjectId.
+- [joi-mongodb-oid](./packages/joi-mongodb-oid/README.md) - Custom Joi validator for MongoDB ObjectId.
+- [zod-mongodb-oid](./packages/zod-mongodb-oid/README.md) - Custom Zod validator for MongoDB ObjectId.
 
 ## About this workspace
 
