@@ -1,0 +1,48 @@
+{
+  "name": "zod-mongodb-oid",
+  "version": "2.0.1",
+  "private": false,
+  "description": "Joi custom validator for MongoDB ObjectId.",
+  "keywords": [
+    "joi",
+    "mongodb",
+    "objectid",
+    "oid",
+    "custom",
+    "validator",
+    "extension",
+    "plugin",
+    "inject"
+  ],
+  "main": "dist/index.js",
+  "scripts": {
+    "reinstall": "rm -rf node_modules package-lock.json && npm install",
+    "build": "npx tsc",
+    "test": "npx jest --collectCoverage",
+    "example:cjs": "npm run build && node ./examples/example.cjs",
+    "example:mjs": "npm run build && node ./examples/example.mjs",
+    "pretest": "npm run build",
+    "prepack": "npm run build",
+    "prepublish": "npm run build",
+    "preexample": "npm run build"
+  },
+  "author": "Paul Smith",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulsmithkc/express-packages"
+  },
+  "bugs": {
+    "url": "https://github.com/paulsmithkc/express-packages/issues"
+  },
+  "homepage": "https://github.com/paulsmithkc/express-packages/tree/main/packages/zod-mongodb-oid#readme",
+  "peerDependencies": {
+    "mongodb": ">=4.0.0",
+    "zod": ">=3.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "latest",
+    "jest": "latest",
+    "typescript": "latest"
+  }
+}

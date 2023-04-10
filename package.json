@@ -36,6 +36,7 @@
     "@types/express": "latest",
     "@types/jest": "latest",
     "@types/lodash": "latest",
+    "@types/node": "16.x",
     "dotenv": "latest",
     "express": "latest",
     "jest": "latest",
