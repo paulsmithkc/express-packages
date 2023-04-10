@@ -6,7 +6,13 @@ import type { RequestHandler } from 'express';
  * @returns the wrapped middleware
  */
 function asyncCatch(middleware: RequestHandler): RequestHandler {
-  return (req, res, next) => Promise.resolve(middleware(req, res, next)).catch(next);
+  return async (req, res, next) => {
+    try {
+      await middleware(req, res, next);
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 // ESM exports
