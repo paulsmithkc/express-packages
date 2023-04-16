@@ -1,6 +1,6 @@
-import validBody from './index';
 import z from 'zod';
 import type { Request, Response, NextFunction } from 'express';
+import { validBody } from './core';
 
 describe('valid-body-zod', () => {
   let req: Request;

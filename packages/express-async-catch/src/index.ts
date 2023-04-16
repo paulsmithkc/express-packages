@@ -1,4 +1,4 @@
-import { asyncCatch } from './asyncCatch';
+import { asyncCatch } from './core';
 
 // CommonJS exports
 module.exports = asyncCatch;

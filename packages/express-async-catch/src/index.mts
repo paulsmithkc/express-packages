@@ -1,4 +1,4 @@
-import { asyncCatch } from './asyncCatch';
+import { asyncCatch } from './core';
 
 // ESM exports
 export default asyncCatch;

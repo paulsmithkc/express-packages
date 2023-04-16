@@ -1,4 +1,4 @@
-import { ObjectId, ZodObjectId, zObjectId } from './index';
+import { ObjectId, ZodObjectId, zObjectId } from './core';
 
 describe('zod-mongodb-oid', () => {
   let schema: ZodObjectId;

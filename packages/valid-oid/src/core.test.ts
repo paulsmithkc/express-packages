@@ -1,6 +1,6 @@
-import validId from './index';
 import { ObjectId } from 'mongodb';
 import type { Request, Response, NextFunction } from 'express';
+import { validId } from './core';
 
 describe('valid-oid', () => {
   let req: Request;

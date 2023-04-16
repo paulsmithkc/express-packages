@@ -1,6 +1,6 @@
-import validRequest from './index';
-import Joi from 'joi';
+import z from 'zod';
 import type { Request, Response, NextFunction } from 'express';
+import { validRequest } from './core';
 
 describe('valid-request-joi', () => {
   let req: Request;
@@ -8,15 +8,13 @@ describe('valid-request-joi', () => {
   let next: NextFunction;
 
   const updateProductSchema = {
-    params: Joi.object({
-      productId: Joi.string()
-        .pattern(/^[0-9a-fA-F]{24}$/, 'ObjectId')
-        .required(),
+    params: z.object({
+      productId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid ObjectId'),
     }),
-    body: Joi.object({
-      name: Joi.string().trim().required(),
-      category: Joi.string().trim().required(),
-      price: Joi.number().min(0).precision(2).required(),
+    body: z.object({
+      name: z.string().transform((x) => x?.trim()),
+      category: z.string().transform((x) => x?.trim()),
+      price: z.number().min(0).multipleOf(0.01),
     }),
   };
 
@@ -105,12 +103,28 @@ describe('valid-request-joi', () => {
         message: 'Request data is invalid. See details.',
         details: {
           params: expect.objectContaining({
-            name: 'ValidationError',
-            message: '"req.params" is required',
+            name: 'ZodError',
+            message: expect.any(String),
+            errors: [
+              expect.objectContaining({
+                path: [],
+                code: 'invalid_type',
+                expected: 'object',
+                message: 'Required',
+              }),
+            ],
           }),
           body: expect.objectContaining({
-            name: 'ValidationError',
-            message: '"req.body" is required',
+            name: 'ZodError',
+            message: expect.any(String),
+            errors: [
+              expect.objectContaining({
+                path: [],
+                code: 'invalid_type',
+                expected: 'object',
+                message: 'Required',
+              }),
+            ],
           }),
         },
       })
