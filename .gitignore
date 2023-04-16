@@ -42,6 +42,7 @@ testem.log
 # duplicate files
 /packages/**/.npmignore
 /packages/**/tsconfig.json
+/packages/**/tsup.config*
 /packages/**/jest.config*
 
 # System Files

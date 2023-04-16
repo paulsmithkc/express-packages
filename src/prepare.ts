@@ -1,3 +1,5 @@
+#!/bin/env node
+
 import { resolve as pathResolve } from 'path';
 import { readdir, stat, copyFile, symlink, rm, readFile, writeFile } from 'node:fs/promises';
 import os from 'node:os';
@@ -21,6 +23,7 @@ async function main() {
 
     await copyToPackage(USE_SYMLINK, packagePath, '.npmignore', '.npmignore'); // needed for pack & publish
     await copyToPackage(USE_SYMLINK, packagePath, 'tsconfig.package.json', 'tsconfig.json'); // needed for local build
+    await copyToPackage(USE_SYMLINK, packagePath, 'tsup.config.ts', 'tsup.config.ts'); // needed for local build
     await copyToPackage(false, packagePath, 'jest.config.json'); // jest config doesn't work with symlinks
     await copyToPackage(false, packagePath, 'LICENSE'); // license must be an actual file
 
@@ -63,6 +66,7 @@ async function fixMetadata(packagePath: string, packageName: string) {
   fix('license', 'MIT');
   fix('private', false);
   fix('main', 'dist/index.js');
+  fix('exports', { import: 'dist/index.mjs', require: 'dist/index.js' });
   fix('repository', {
     type: 'git',
     url: 'git+https://github.com/paulsmithkc/express-packages',
@@ -74,7 +78,12 @@ async function fixMetadata(packagePath: string, packageName: string) {
   fix('scripts', {
     ...(metadata.scripts || {}),
     reinstall: 'rm -rf node_modules package-lock.json && npm install',
-    build: 'npx tsc',
+    //build: 'npx npm-run-all clean build:cjs build:esm',
+    build: 'npm run clean && npm run build:cjs && npm run build:esm',
+    clean: 'npx rimraf dist',
+    'build:ts': 'npx tsc',
+    'build:esm': 'npx tsup --format esm --minify --env.NODE_ENV production',
+    'build:cjs': 'npx tsup --format cjs --minify --env.NODE_ENV production',
     test: 'npx jest --collectCoverage',
     pretest: 'npm run build',
     prepack: 'npm run build',

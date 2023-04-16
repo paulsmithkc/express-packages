@@ -1,10 +1,12 @@
 .vscode
 node_modules
-examples
 coverage
+examples
+src
 
 *.env
 *.tgz
 jest.config*
+tsup.config*
 tsconfig.json
 tsconfig.tsbuildinfo

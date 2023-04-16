@@ -13,7 +13,8 @@
   },
   "homepage": "https://github.com/paulsmithkc/express-packages#readme",
   "scripts": {
-    "reinstall": "rm -rf node_modules package-lock.json && npm install",
+    "clean": "npx rimraf --glob **/{dist,node_modules,package-lock.json}",
+    "reinstall": "npm run clean && npm install",
     "prepare": "npx ts-node ./src/prepare.ts",
     "prepare:link": "npx ts-node ./src/prepare.ts --link",
     "tsc": "npx tsc -p tsconfig.root.json",
@@ -43,10 +44,13 @@
     "joi": "latest",
     "lodash": "latest",
     "mongodb": "latest",
+    "npm-run-all": "latest",
     "nx": "15.6.3",
     "prettier": "latest",
+    "rimraf": "5.0.0",
     "ts-jest": "latest",
     "ts-node": "latest",
+    "tsup": "latest",
     "typescript": "latest",
     "zod": "latest"
   },
