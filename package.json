@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/paulsmithkc/express-packages#readme",
   "scripts": {
-    "clean": "npx rimraf --glob **/{dist,node_modules,package-lock.json}",
+    "clean": "npx rimraf --glob **/{dist,coverage,node_modules,package-lock.json,*.tgz}",
     "reinstall": "npm run clean && npm install",
     "prepare": "npx ts-node ./src/prepare.ts",
     "prepare:link": "npx ts-node ./src/prepare.ts --link",
