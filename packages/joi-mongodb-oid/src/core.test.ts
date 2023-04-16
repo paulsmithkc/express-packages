@@ -1,9 +1,9 @@
-import JoiMongoDB, { ObjectId, JoiObjectId } from './index';
+import { ObjectId, JoiObjectId, extend } from './core';
 
 describe('joi-mongodb-oid', () => {
   let schema: JoiObjectId;
   beforeAll(() => {
-    schema = JoiMongoDB().objectId();
+    schema = extend().objectId();
   });
 
   it('valid: ObjectId', () => {

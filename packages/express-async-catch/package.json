@@ -14,8 +14,8 @@
   ],
   "main": "dist/index.js",
   "exports": {
-    "require": "dist/index.js",
-    "import": "dist/index.mjs"
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
   },
   "scripts": {
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
