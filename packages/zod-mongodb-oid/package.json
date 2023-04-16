@@ -1,6 +1,6 @@
 {
   "name": "zod-mongodb-oid",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "private": false,
   "description": "Custom Zod validator for MongoDB ObjectId.",
   "keywords": [
