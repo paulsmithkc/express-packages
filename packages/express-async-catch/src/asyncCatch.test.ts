@@ -1,4 +1,4 @@
-import asyncCatch from './index';
+import { asyncCatch } from './asyncCatch';
 import type { RequestHandler, Request, Response, NextFunction } from 'express';
 
 class ErrorWithStatus extends Error {
