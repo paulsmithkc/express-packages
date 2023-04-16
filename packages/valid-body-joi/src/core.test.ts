@@ -1,6 +1,6 @@
-import validBody from './index';
 import Joi from 'joi';
 import type { Request, Response, NextFunction } from 'express';
+import { validBody } from './core';
 
 describe('valid-body-joi', () => {
   let req: Request;
