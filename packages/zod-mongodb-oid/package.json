@@ -15,9 +15,17 @@
     "inject"
   ],
   "main": "dist/index.js",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
   "scripts": {
     "reinstall": "rm -rf node_modules package-lock.json && npm install",
-    "build": "npx tsc",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "clean": "npx rimraf dist",
+    "build:ts": "npx tsc",
+    "build:esm": "npx tsup --format esm --minify --env.NODE_ENV production",
+    "build:cjs": "npx tsup --format cjs --minify --env.NODE_ENV production",
     "test": "npx jest --collectCoverage",
     "example:cjs": "npm run build && node ./examples/example.cjs",
     "example:mjs": "npm run build && node ./examples/example.mjs",
