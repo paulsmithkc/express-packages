@@ -39,3 +39,5 @@ This workspace uses [the tsup bundler.](https://tsup.egoist.dev/)
 [![Rate this package](https://badges.openbase.com/js/rating/valid-body-joi.svg?token=mRlFt8lezixEsTzUzNNqOf6sYWoXM7d5+1nS2iN9Jec=)](https://openbase.com/js/valid-body-joi?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 
 [![Rate this package](https://badges.openbase.com/js/rating/valid-request-joi.svg?token=xWKjdHjd5nRT+3MOlP+fc73ar4HeYUuY5CMufrNrdqM=)](https://openbase.com/js/valid-request-joi?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
+
+[![Rate this package](https://badges.openbase.com/js/rating/valid-body-zod.svg?token=vlM15Hev4GHRseCipleoIVk/fT2B0usOT9X8sQ2pwlY=)](https://openbase.com/js/valid-body-zod?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
