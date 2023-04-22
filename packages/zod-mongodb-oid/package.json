@@ -1,6 +1,6 @@
 {
   "name": "zod-mongodb-oid",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "private": false,
   "description": "Custom Zod validator for MongoDB ObjectId.",
   "keywords": [
@@ -14,6 +14,7 @@
     "plugin",
     "inject"
   ],
+  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "exports": {

@@ -1,6 +1,6 @@
 {
   "name": "express-async-catch",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": false,
   "description": "Simple wrapper for Express route handlers, which propagates errors to the centralized error handler.",
   "keywords": [
@@ -12,6 +12,7 @@
     "exception",
     "promise-reject"
   ],
+  "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "exports": {
