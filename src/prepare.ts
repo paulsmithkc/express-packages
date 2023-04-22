@@ -66,6 +66,7 @@ async function fixMetadata(packagePath: string, packageName: string) {
   fix('license', 'MIT');
   fix('private', false);
   fix('main', 'dist/index.js');
+  fix('module', 'dist/index.mjs');
   fix('exports', { import: './dist/index.mjs', require: './dist/index.js' });
   fix('repository', {
     type: 'git',
